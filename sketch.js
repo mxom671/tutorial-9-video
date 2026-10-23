@@ -88,21 +88,18 @@ function draw() {
   image(imagenFiltro, 10, 10, 32, 32);
 }
 
-// FUNCIÓN QUE SE LLAMA AL PRESIONAR CLIC EN EL RATÓN
+// FUNCIÓN QUE SE LLAMA AL HACER CLIC O TOCAR LA PANTALLA
 function mouseClicked() {
-  // 1. Si se hace clic sobre la imagen del icono de filtro (esquina superior izquierda)
+  // Si hace clic sobre el ícono (cuadro de 32x32)
   if (mouseX > 10 && mouseX < 42 && mouseY > 10 && mouseY < 42) {
     filtro = Math.round(random(0, 7));
-  } 
-}
-// FUNCIÓN QUE DETECTA TECLAS PRESIONADAS
-function keyPressed() {
-  // 32 es el código ASCII de la Barra Espaciadora (' ')
-  if (keyCode === 32) {
+  } else {
+    // Si hace clic o toca cualquier otra parte de la pantalla (ideal para celular)
     if (videoConejo.time() > 0 && !videoConejo.elt.paused) {
-      videoConejo.pause(); // Si se está reproduciendo, lo pausa
+      videoConejo.pause();
     } else {
-      videoConejo.loop();  // Si está pausado, reanuda la reproducción
+      videoConejo.loop();
     }
   }
 }
+
